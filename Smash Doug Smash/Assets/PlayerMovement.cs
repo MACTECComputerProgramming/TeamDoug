@@ -5,10 +5,10 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     
-    public float turnSpeed = 15f;
-    public float speed = 5f;
+    public float turnSpeed = 50f;
+    public float speed = 100f;
     public float horizontalInput;
-    public float forwardInput;
+    
 
 
 
@@ -16,11 +16,11 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         horizontalInput = Input.GetAxis("Horizontal");
-        forwardInput = Input.GetAxis("Vertical");
+        
 
 
 
-        transform.Translate(Vector3.forward * Time.deltaTime * speed * forwardInput);
+        transform.Translate(Vector3.forward * Time.deltaTime * speed);
         transform.Rotate(Vector3.up, Time.deltaTime * turnSpeed * horizontalInput);
 
 

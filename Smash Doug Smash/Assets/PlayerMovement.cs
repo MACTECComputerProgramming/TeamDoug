@@ -7,7 +7,7 @@ public class PlayerMovement : MonoBehaviour
     
     public float turnSpeed = 50f;
     public float speed = 100f;
-    public float horizontalInput;
+    private float horizontalInput;
     
 
 

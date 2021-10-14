@@ -4,12 +4,10 @@ using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
-    public GameObject[] enemyPrefabs;
-    public int spawnRangeX = 100;
-    public int spawnRangeZ = 100;
+    public GameObject enemyPrefab;
+    private float spawnRange = 100;
     private float startDelay = 3;
     private float spawnInterval = 1.5f;
-
 
 
 
@@ -17,7 +15,7 @@ public class SpawnManager : MonoBehaviour
     void Start()
     {
 
-        InvokeRepeating("SpawnRandomEnemy", startDelay, spawnInterval);
+        Instantiate(enemyPrefab, GenerateSpawnPosition(), enemyPrefab.transform.rotation);
 
     }
 
@@ -31,12 +29,13 @@ public class SpawnManager : MonoBehaviour
 
     }
 
-    void SpawnRandomEnemy()
+    private Vector3 GenerateSpawnPosition()
     {
+        float spawnPosX = Random.Range(-spawnRange, spawnRange);
+        float spawnPosZ = Random.Range(-spawnRange, spawnRange);
+        Vector3 randomPos = new Vector3(spawnPosX, 0, spawnPosZ);
+        return randomPos;
 
-        int enemyIndex = Random.Range(0, enemyPrefabs.Length);
-        Vector3 spawnPos = new Vector3(Random.Range(-spawnRangeX, spawnRangeX), 3, Random.Range(-spawnRangeZ, spawnRangeZ));
-        Instantiate(enemyPrefabs[enemyIndex], spawnPos, enemyPrefabs[enemyIndex].transform.rotation);
     }
 
     

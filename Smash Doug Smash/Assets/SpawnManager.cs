@@ -17,7 +17,7 @@ public class SpawnManager : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void LateUpdate()
     {
         enemyCount = FindObjectOfType<Enemy>().Length;
 
@@ -27,7 +27,12 @@ public class SpawnManager : MonoBehaviour
             SpawnEnemyWave(waveNumber);
 
         }
-        
+        else 
+        {
+            
+
+
+        }
 
 
     }

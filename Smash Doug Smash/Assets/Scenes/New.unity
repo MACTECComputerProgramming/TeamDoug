@@ -248,7 +248,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 803f0d23f8fc73541aa655858d138d46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 0}
+  enemyPrefab: {fileID: 1569220441064634314, guid: 5d5a87ff288674d47ba358c1c1f8009a, type: 3}
   enemyCount: 0
   waveNumber: 1
 --- !u!4 &1096152682

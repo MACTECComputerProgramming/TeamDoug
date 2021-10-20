@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    private Rigidbody playerRb;
     public float turnSpeed = 50f;
     public float speed = 100.0f;
     private float horizontalInput;
@@ -13,10 +12,6 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
-        playerRb = GetComponent<Rigidbody>();
-
-
-
 
 
     }
@@ -29,7 +24,7 @@ public class PlayerMovement : MonoBehaviour
         forwardInput = Input.GetAxis("Vertical");
         horizontalInput = Input.GetAxis("Horizontal");
 
-        playerRb.AddForce(Vector3.forward * Time.deltaTime * speed * forwardInput);
+        transform.Translate(Vector3.forward * Time.deltaTime * speed * forwardInput);
         transform.Rotate(Vector3.up, turnSpeed * Time.deltaTime * horizontalInput);
 
 

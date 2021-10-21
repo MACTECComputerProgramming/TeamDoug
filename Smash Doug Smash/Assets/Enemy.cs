@@ -6,7 +6,6 @@ public class Enemy : MonoBehaviour
 {
     public float speed;
     internal int Length;
-    private Rigidbody enemyRb;
     private GameObject player;
    
 
@@ -16,12 +15,12 @@ public class Enemy : MonoBehaviour
     void Start()
     {
 
-        enemyRb = GetComponent<Rigidbody>();
+
         player = GameObject.Find("Player");
 
         Vector3 lookDirection = (player.transform.position - transform.position).normalized;
 
-        enemyRb.AddForce(lookDirection * Time.deltaTime * speed);
+        transform.Translate(lookDirection * Time.deltaTime * speed);
 
 
     }
@@ -30,12 +29,30 @@ public class Enemy : MonoBehaviour
     void Update()
     {
 
-        if (transform.position.y < -1)
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+
+        if (other == GameObject.Find("Player"))
         {
             Destroy(gameObject);
+
+            Destroy(GameObject.Find("Player"));
+
+            Debug.Log("Game Over");
+
+        }
+        else if (other != GameObject.Find("Player"))
+        {
+
+            Debug.Log("You will die soon!!!");
+
+
+
         }
 
 
-
     }
+
 }

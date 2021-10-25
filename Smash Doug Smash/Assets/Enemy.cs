@@ -6,9 +6,9 @@
  {
  
      public Transform Player;
-     int MoveSpeed = 4;
+     int MoveSpeed = 20;
      int MaxDist = 10;
-     int MinDist = 5;
+     int MinDist = 1;
  
  
  
@@ -32,16 +32,18 @@
  
  
  
-             if (Vector3.Distance(transform.position, Player.position) <= MaxDist)
-             {
-                 
-
-
-
-
-
-             }
+             
  
          }
-     }
+
+        else if (Vector3.Distance(transform.position, Player.position) <= MaxDist)
+        {
+
+            Destroy(gameObject);
+
+
+
+
+        }
+    }
  }

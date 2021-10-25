@@ -4,11 +4,13 @@
  using UnityEngine.UI;
  public class Enemy : MonoBehaviour
  {
- 
+     
+     public GameObject rocketPrefab;
      public Transform Player;
-     int MoveSpeed = 20;
-     int MaxDist = 10;
-     int MinDist = 1;
+     int MoveSpeed = 30;
+     int MaxDist = 30;
+     int MinDist = 3;
+     public float flightSpeed = 50.0f;
  
  
  
@@ -23,6 +25,10 @@
  
      void Update()
      {
+        transform.Translate(Vector3.up * Time.deltaTime * flightSpeed);
+
+
+
          transform.LookAt(Player);
  
          if (Vector3.Distance(transform.position, Player.position) >= MinDist)
@@ -39,11 +45,11 @@
         else if (Vector3.Distance(transform.position, Player.position) <= MaxDist)
         {
 
-            Destroy(gameObject);
-
+            Instantiate(rocketPrefab, transform.position, rocketPrefab.transform.rotation);
 
 
 
         }
-    }
+       
+     }
  }

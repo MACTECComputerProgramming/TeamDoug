@@ -8,6 +8,22 @@ public class DestroyObjects : MonoBehaviour
     //Destroys objects it touches
     void OnTriggerEnter(Collider other)
     {
-        Destroy(other.gameObject);
+        if (other.tag == "Player")
+        {
+            Destroy(gameObject);
+
+            Destroy(other.gameObject);
+        }
+        else if (other.tag == "Enemy")
+        {
+            Destroy(gameObject);
+
+            Destroy(other.gameObject);
+        }
+        
+        
+        
+        
+        
     }
 }

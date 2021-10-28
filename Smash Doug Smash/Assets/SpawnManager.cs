@@ -6,7 +6,7 @@ public class SpawnManager : MonoBehaviour
 {
     
     public GameObject enemyPrefab;
-    private float spawnRange = 100;
+    private float spawnRange = 1000;
     public int enemyCount;
     private int waveNumber = 1;
 

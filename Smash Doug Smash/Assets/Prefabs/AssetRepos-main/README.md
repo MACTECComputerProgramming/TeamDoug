@@ -1,2 +1,0 @@
-# AssetRepos
-for unity assets

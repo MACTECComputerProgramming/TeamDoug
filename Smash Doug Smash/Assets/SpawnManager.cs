@@ -6,7 +6,7 @@ public class SpawnManager : MonoBehaviour
 {
     
     public GameObject enemyPrefab;
-    private float spawnRange = 1000;
+    private float spawnRange = 10;
     public int enemyCount;
     private int waveNumber = 1;
 
@@ -42,7 +42,7 @@ public class SpawnManager : MonoBehaviour
     {
         float spawnPosX = Random.Range(-spawnRange, spawnRange);
         float spawnPosZ = Random.Range(-spawnRange, spawnRange);
-        Vector3 randomPos = new Vector3(spawnPosX, 10, spawnPosZ);
+        Vector3 randomPos = new Vector3(spawnPosX, 1, spawnPosZ);
         return randomPos;
     }
 

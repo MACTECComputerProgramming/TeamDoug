@@ -4,27 +4,27 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public Rigidbody playerRb;
-    public float turnSpeed = 500.0f;
-    public float forwardForce = 1000f;
+    public float turnSpeed = 0.05f;
+    public float speed = 0.01f;
     private float horizontalInput;
-    
+    private float verticalInput;
     
 
     void Start()
     {
-        playerRb.GetComponent<Rigidbody>();
+        
 
     }
 
 
 
-    void FixedUpdate()
+    void Update()
     {
+        verticalInput = Input.GetAxis("Vertical");
         horizontalInput = Input.GetAxis("Horizontal");
 
-        playerRb.AddForce(0, 0, forwardForce * Time.deltaTime);
-        playerRb.transform.Rotate(Vector3.up, turnSpeed * Time.deltaTime * horizontalInput);
+        transform.Translate(Vector3.forward * speed * Time.deltaTime * verticalInput);
+        transform.Rotate(Vector3.up, turnSpeed * Time.deltaTime * horizontalInput);
     }
     
 

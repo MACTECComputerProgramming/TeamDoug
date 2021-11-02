@@ -6,8 +6,8 @@ public class Enemy : MonoBehaviour
 {
 
     public Transform Player;
-    int MoveSpeed = 30;
-    int MinDist = 3;
+    float MoveSpeed = 0.03f;
+    float MinDist = 0.003f;
 
 
 

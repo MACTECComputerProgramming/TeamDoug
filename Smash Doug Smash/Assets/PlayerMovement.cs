@@ -24,7 +24,7 @@ public class PlayerMovement : MonoBehaviour
         horizontalInput = Input.GetAxis("Horizontal");
 
         playerRb.AddForce(0, 0, forwardForce * Time.deltaTime);
-        transform.Rotate(Vector3.up, turnSpeed * Time.deltaTime * horizontalInput);
+        playerRb.transform.Rotate(Vector3.up, turnSpeed * Time.deltaTime * horizontalInput);
     }
     
 

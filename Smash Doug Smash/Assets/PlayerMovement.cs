@@ -5,16 +5,14 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public Rigidbody playerRb;
-    private float turnSpeed = 10f;
-    private float speed = 1f;
-    private float horizontalInput;
-    private float verticalInput;
-    
-
+    private float forwardInput;
+    private float turnSpeed = 70f;
+    private float forwardForce = 100f;
+    private float sidewaysForce = 50f;
     void Start()
     {
 
-        playerRb.GetComponent<Rigidbody>();
+        
 
     }
 
@@ -22,12 +20,32 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        verticalInput = Input.GetAxis("Vertical");
-        horizontalInput = Input.GetAxis("Horizontal");
+        forwardInput = Input.GetAxis("Vertical");
+        
 
-        playerRb.transform.Translate(Vector3.forward * speed * Time.deltaTime * verticalInput);
-        playerRb.transform.Rotate(Vector3.up, turnSpeed * Time.deltaTime * horizontalInput);
+        playerRb.AddForce(0, 0, forwardForce * Time.deltaTime * forwardInput, ForceMode.VelocityChange);
+        TurningPlayer();
+
+
     }
     
+    void TurningPlayer()
+    {
+        
+        if (Input.GetKey("a"))
+        {
+            playerRb.AddForce(-sidewaysForce * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
+            playerRb.transform.Rotate(-Vector3.up * Time.deltaTime * turnSpeed);
+        }
+        if (Input.GetKey("d"))
+        {
+            playerRb.AddForce(sidewaysForce * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
+            playerRb.transform.Rotate(Vector3.up * Time.deltaTime * turnSpeed);
+        }
+
+
+
+
+    }
 
 }

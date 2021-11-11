@@ -1,34 +1,63 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
-    public GameObject[] animalPrefabs;
-    private float rangeX = 20;
-    private float posZ = 20;
-    private float startDelay = 1.5f;
-    public float spawnInterval = .000001f;
+    
+    public GameObject enemyPrefab;
+    private float spawnRange = 100;
+    public int enemyCount;
+    private int waveNumber = 1;
+
 
     // Start is called before the first frame update
     void Start()
     {
-        InvokeRepeating("SpawnRandomAnimal", startDelay, spawnInterval);
+        SpawnEnemyWave(waveNumber);
+
     }
 
     // Update is called once per frame
     void Update()
     {
 
+        enemyCount = FindObjectsOfType<Enemy>().Length;
+
+        if (enemyCount == 0)
+        {
+            waveNumber++;
+
+            SpawnEnemyWave(waveNumber);
+
+
+        }
+
+
+
+
     }
 
-    void SpawnRandomAnimal()
+    private Vector3 GenerateSpawnPosition()
     {
-        int animalIndex   = Random.Range(0, animalPrefabs.Length);
-        GameObject animal = animalPrefabs[animalIndex];
-        float posX        = Random.Range(-rangeX, rangeX);
-        Vector3 spawnPos  = new Vector3(posX, 0, posZ);
-
-        Instantiate(animal, spawnPos, animal.transform.rotation);
+        float spawnPosX = Random.Range(-spawnRange, spawnRange);
+        float spawnPosZ = Random.Range(-spawnRange, spawnRange);
+        Vector3 randomPos = new Vector3(spawnPosX, 5, spawnPosZ);
+        return randomPos;
     }
+
+    void SpawnEnemyWave(int enemiesToSpawn)
+    {
+        for (int i = 0; i < enemiesToSpawn; i++)
+        {
+            Instantiate(enemyPrefab, GenerateSpawnPosition(), enemyPrefab.transform.rotation);
+        }
+
+
+
+    }
+
+
+
+
 }

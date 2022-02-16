@@ -6,7 +6,7 @@ public class CameraOffset : MonoBehaviour
 {
 
     public GameObject player;
-    private Vector3 offset = new Vector3(0, 2000, 0);
+    private Vector3 offset = new Vector3(0, 150, 0);
     
 
     // Start is called before the first frame update
@@ -19,6 +19,11 @@ public class CameraOffset : MonoBehaviour
     void LateUpdate()
     {
         transform.position = player.transform.position + offset;
+
+
+
+
+
 
 
     }
